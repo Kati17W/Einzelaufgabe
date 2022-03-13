@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Handler handler = new Handler();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ASCII ascii = new ASCII();
                 new Thread(ascii).start();
         }
-
-
     }
-
 
     class Server extends Thread {
         private String in = editTextNumber2.getText().toString();
@@ -86,8 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 e.printStackTrace(System.out);
             }
         }
-
-
 
     }
 
