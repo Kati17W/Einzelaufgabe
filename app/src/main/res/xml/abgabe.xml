@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <person>
+        <name>Katrin Weissacher</name>
+        <matrikelnummer>11905911</matrikelnummer>
+        <lastcommithash>f4b7d5ade7d53e0a8f5e83e0b088c87196f10a9b</lastcommithash>
+        <githubusername>Kati17W</githubusername>
+        <repositoryname>Einzelaufgabe</repositoryname>
+        <repositoryurl>https://github.com/Kati17W/Einzelaufgabe</repositoryurl>
+    </person>
+</PreferenceScreen>
