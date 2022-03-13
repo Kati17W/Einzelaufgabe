@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button;
     EditText editTextNumber2;
     TextView textView2;
+    Button button2;
 
-    private Handler handler = new Handler();
+    Handler handler = new Handler();
 
 
     @Override
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         textView = (TextView) findViewById(R.id.textView);
         button = (Button) findViewById(R.id.button);
+        button2 = (Button) findViewById(R.id.button2);
         editTextNumber2 = (EditText) findViewById(R.id.editTextNumber2);
         textView2 = (TextView) findViewById(R.id.textView2);
         button.setOnClickListener(this);
@@ -41,8 +43,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Server server = new Server();
-        new Thread(server).start();
+        switch(view.getId()) {
+            case R.id.button:
+                Server server = new Server();
+                new Thread(server).start();
+                break;
+            case R.id.button2:
+                ASCII ascii = new ASCII();
+                new Thread(ascii).start();
+        }
+
 
     }
 
@@ -68,25 +78,72 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 out = bufferedReader.readLine();
                 s.close();
 
+                handler.post(()->{
+                    textView2.setText(out);
+                });
+
             } catch (IOException e) {
                 e.printStackTrace(System.out);
             }
         }
 
-        public String ascii(ArrayList<Character> editTextNumber2) {
-            char result = editTextNumber2.get(0);
-
-            for (int i = 1; i < editTextNumber2.size(); i++) {
-                if (i % 2 == 0) {
-
-                } else {
 
 
-                }
-            }
+    }
 
-            return String.valueOf(result);
+    public class ASCII extends Thread{
+        private String in = editTextNumber2.getText().toString();
+        String[] stringArray = in.split("");
+        char[] charArray = new char[in.length()];
+        String string1 = new String();
+
+        public void run() {
+            string1=convert(in);
         }
 
+        public String convert(String in) {
+            String string1 = new String();
+            for(int i =0;i<stringArray.length;i++) {
+                if(i % 2 ==0) {
+                    switch (stringArray[i]){
+                        case "1":
+                            stringArray[i] = "a";
+                            break;
+                        case "2":
+                            stringArray[i] = "b";
+                            break;
+                        case "3":
+                            stringArray[i] = "c";
+                            break;
+                        case "4":
+                            stringArray[i] = "d";
+                            break;
+                        case "5":
+                            stringArray[i] = "e";
+                            break;
+                        case "6":
+                            stringArray[i] = "f";
+                            break;
+                        case "7":
+                            stringArray[i] = "g";
+                            break;
+                        case "8":
+                            stringArray[i] = "h";
+                            break;
+                        case "9":
+                            stringArray[i] = "i";
+                            break;
+                        case "0":
+                            stringArray[i] = "j";
+                    }
+                }
+            }
+            return string1 = stringArray.toString();
+
+            /*for(int i = 0; i < this.in.length(); i++){
+                charArray[i] = this.in.charAt(i);
+            }
+            return charArray;*/
+        }
     }
 }
